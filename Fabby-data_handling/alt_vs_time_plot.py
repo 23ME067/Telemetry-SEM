@@ -3,7 +3,7 @@ import matplotlib.dates as mdates
 import pandas as pd
 
 # Load the data from the file
-data = pd.read_csv('alt_vs_time.csv', parse_dates=['time'])
+data = pd.read_csv('gga_data.csv', parse_dates=['time'])
 
 # Convert the time column to a datetime format
 data['time'] = pd.to_datetime(data['time'])
