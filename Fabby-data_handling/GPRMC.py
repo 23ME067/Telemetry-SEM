@@ -18,7 +18,7 @@ def read_nmea_data(filepath):
     return ""
 
 # Specify the path to your NMEA data file
-nmea_filepath = "track.txt"  # Replace with your actual path
+nmea_filepath = "test.txt"  # Replace with your actual path
 
 # Read NMEA data from the file
 nmea_data = read_nmea_data(nmea_filepath)
@@ -41,8 +41,16 @@ for line in lines:
     
     # Extract desired data (assuming valid format)
     timestamp = fields[1]
-    latitude = fields[3]
-    longitude = fields[4]
+    latitude = fields[3]  # Remove leading zero from latitude (already done)
+
+    # Shift decimal point in latitude two places to the left (multiply by 100)
+    latitude = float(latitude) / 100
+
+    longitude = fields[5]  # Remove leading zero from longitude (already done)
+
+    # Shift decimal point in longitude two places to the left (multiply by 100)
+    longitude = float(longitude) / 100
+
     speed = float(fields[7])  # Convert speed to float
 
     # Convert speed from knots to km/h by multiplying by 1.852
@@ -60,8 +68,8 @@ for line in lines:
 # Create a dictionary from extracted data
 data = {
   "Timestamp": timestamps,
-  "Latitude": latitudes,
-  "Longitude": longitudes,
+  "lat": latitudes,
+  "lon": longitudes,
   "Speed (km/h)": speeds  # Update key name for clarity
 }
 
