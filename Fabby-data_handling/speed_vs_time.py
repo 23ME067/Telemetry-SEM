@@ -3,7 +3,7 @@ import matplotlib.dates as mdates
 import pandas as pd
 
 # Load the data from the file
-data = pd.read_csv('speed_vs_time.csv', parse_dates=['timestamp'])
+data = pd.read_csv('time_coordinate_speed.csv', parse_dates=['timestamp'])
 
 # Create the plot
 fig, ax = plt.subplots()
